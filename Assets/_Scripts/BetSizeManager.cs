@@ -11,12 +11,12 @@ public class BetSizeManager : MonoBehaviour
     [SerializeField] private Sprite clickedSprite;
     [SerializeField] private Sprite unclickedSprite;
 
-    private float[] betSizeValues = { .01f, .10f, .25f, .50f, 1, 5, 10, 25, 50, 100 };
-    private int currentIndex = 4;
+    private float[] betSizeValues = {1, 5, 10, 25, 50, 100, 300, 500 };
+    private int currentIndex = 2;
 
     private void Start()
     {
-        UpdateValue();
+        playerStats.BetSize = betSizeValues[currentIndex];
         increaseButton.onClick.AddListener(IncreaseValue);
         decreaseButton.onClick.AddListener(DecreaseValue);
     }

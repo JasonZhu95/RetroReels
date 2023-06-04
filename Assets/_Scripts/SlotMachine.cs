@@ -18,6 +18,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private PlayerStatManager playerStats;
     [SerializeField] private GameObject handle;
     [SerializeField] private GameObject handleInactive;
+    [SerializeField] private GameObject gameOverCanvas;
 
     private bool isSpinning = false;
     private Vector3[] initialSlotPosition;
@@ -141,10 +142,20 @@ public class SlotMachine : MonoBehaviour
         {
             playerStats.WinMoney(payout);
         }
+        if (payout <= 0 && playerStats.CurrentBalance == 0)
+        {
+            StartCoroutine(StartGameOver());
+        }
         isSpinning = false;
         SoundManager.instance.StopPlay("StartReel");
         handle.SetActive(true);
         handleInactive.SetActive(false);
+    }
+
+    private IEnumerator StartGameOver()
+    {
+        yield return new WaitForSeconds(1f);
+        gameOverCanvas.SetActive(true);
     }
 
     private int GetPayout(SymbolType symbolOne, SymbolType symbolTwo, SymbolType symbolThree)

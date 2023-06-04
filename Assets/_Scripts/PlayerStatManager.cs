@@ -28,6 +28,11 @@ public class PlayerStatManager : MonoBehaviour
         payoutAnimator.SetBool("start", true);
     }
 
+    public void ResetBalanceOnGameOver()
+    {
+        CurrentBalance = 500;
+    }
+
     public void PlaceWager()
     {
         CurrentBalance -= BetSize;
