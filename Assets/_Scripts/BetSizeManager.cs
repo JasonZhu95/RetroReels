@@ -35,6 +35,7 @@ public class BetSizeManager : MonoBehaviour
 
     private IEnumerator ChangeButtonSprite(Button btn)
     {
+        SoundManager.instance.Play("UIClick");
         playerStats.BetSize = betSizeValues[currentIndex];
         btn.image.sprite = clickedSprite;
         btn.interactable = false;

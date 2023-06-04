@@ -42,6 +42,7 @@ public class SlotMachine : MonoBehaviour
             initialSlotPosition[i] = reels[i].transform.position;
         }
     }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -62,6 +63,8 @@ public class SlotMachine : MonoBehaviour
 
         handle.SetActive(false);
         handleInactive.SetActive(true);
+        SoundManager.instance.Play("PullLever");
+        SoundManager.instance.Play("StartReel");
 
         for (int i = 0; i < reels.Length; i++)
         {
@@ -139,6 +142,7 @@ public class SlotMachine : MonoBehaviour
             playerStats.WinMoney(payout);
         }
         isSpinning = false;
+        SoundManager.instance.StopPlay("StartReel");
         handle.SetActive(true);
         handleInactive.SetActive(false);
     }

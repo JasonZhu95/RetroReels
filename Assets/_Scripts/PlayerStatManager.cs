@@ -21,6 +21,7 @@ public class PlayerStatManager : MonoBehaviour
 
     public void WinMoney(float amount)
     {
+        SoundManager.instance.Play("Payout");
         float payoutValue = amount * BetSize;
         CurrentBalance += payoutValue;
         payoutText.text = "+$" + payoutValue;
