@@ -6,11 +6,10 @@ public class Reel : MonoBehaviour
 {
     public int numberOfSymbolsOnWheel;
     public SymbolType[] symbolArray;
-    private SymbolType currentSymbol;
+    public SymbolType currentSymbol { get; set; }
 
     public void SetCurrentSymbol(int symbolIndex)
     {
         currentSymbol = symbolArray[symbolIndex];
-        Debug.Log(currentSymbol);
     }
 }
