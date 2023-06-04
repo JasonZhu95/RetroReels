@@ -4,6 +4,10 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
+/* ----------------------------------------------------------------------------
+ * Class: SoundManager
+ * Description: Singleton class that holds and manages the audio files.
+ * ---------------------------------------------------------------------------- */
 public class SoundManager : MonoBehaviour
 {
     public Sound[] sounds;
@@ -30,11 +34,17 @@ public class SoundManager : MonoBehaviour
             s.source.loop = s.loop;
         }
     }
+
     private void Start()
     {
         Play("MusicTheme");
     }
 
+    /* ------------------------------------------------------------------------
+    * Function: Play
+    * Description: Searches the sound array and plays the audio clip associated
+    * with the string name
+    * ---------------------------------------------------------------------- */
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -46,6 +56,11 @@ public class SoundManager : MonoBehaviour
         s.source.Play();
     }
 
+    /* ------------------------------------------------------------------------
+    * Function: StopPlay
+    * Description: Searches the sound array and stops the currently playing 
+    * sound.  Mainly used when soudns are looping.
+    * ---------------------------------------------------------------------- */
     public void StopPlay(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -57,6 +72,10 @@ public class SoundManager : MonoBehaviour
         s.source.Stop();
     }
 
+    /* ------------------------------------------------------------------------
+    * Function: StopPlay
+    * Description: Changes the volume of a sound
+    * ---------------------------------------------------------------------- */
     public void ChangeVolume(string name, float volume)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -68,6 +87,10 @@ public class SoundManager : MonoBehaviour
         s.source.volume = volume;
     }
 
+    /* ------------------------------------------------------------------------
+    * Function: PlayUIClick
+    * Description: Added a function for easy access to attach to buttons.
+    * ---------------------------------------------------------------------- */
     public void PlayUIClick()
     {
         Play("UIClick");
